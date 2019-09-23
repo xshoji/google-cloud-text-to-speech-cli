@@ -24,7 +24,7 @@ type options struct {
 	Voice          string  `short:"v" long:"voice" description:"Voice type ( see --listvoicetype )." default:"en-AU-Standard-A"`
 	SpeakingRate   float64 `short:"s" long:"rate" description:"SpeakingRate." default:"1.0"`
 	Pitch          float64 `short:"p" long:"pitch" description:"Pitch." default:"1.0"`
-	OutputFilePath string  `short:"o" long:"output" description:"Output file path." default:"output.mp3"`
+	OutputFilePath string  `short:"o" long:"output" description:"Output file path." default:"out/output.mp3"`
 	ListVoiceType  bool    `long:"listvoicetype" description:"Display voice types."`
 }
 
@@ -95,8 +95,8 @@ func main() {
 		// Select the type of audio file you want returned.
 		AudioConfig: &texttospeechpb.AudioConfig{
 			AudioEncoding: texttospeechpb.AudioEncoding_MP3,
-			SpeakingRate:  1.0,
-			Pitch:         1.0,
+			SpeakingRate:  opts.SpeakingRate,
+			Pitch:         opts.Pitch,
 		},
 	}
 
