@@ -22,8 +22,8 @@ type options struct {
 	LanguageCode   string  `short:"l" long:"language" description:"LanguageCode." default:"en"`
 	Gender         string  `short:"g" long:"gender" description:"SsmlGender." default:"FEMALE"`
 	Voice          string  `short:"v" long:"voice" description:"Voice type ( see --listvoicetype )." default:"en-AU-Standard-A"`
-	SpeakingRate   float64 `short:"s" long:"rate" description:"SpeakingRate." default:"1.0"`
-	Pitch          float64 `short:"p" long:"pitch" description:"Pitch." default:"1.0"`
+	SpeakingRate   float64 `short:"s" long:"rate" description:"SpeakingRate. [ 0.25 <= rate <= 4.0 ]" default:"1.0"`
+	Pitch          float64 `short:"p" long:"pitch" description:"Pitch. [ -20.0 <= pitch <= 20.0 ] " default:"0.0"`
 	OutputFilePath string  `short:"o" long:"output" description:"Output file path." default:"out/output.mp3"`
 	ListVoiceType  bool    `long:"listvoicetype" description:"Display voice types."`
 }
@@ -90,6 +90,7 @@ func main() {
 		// voice genderFlag ("neutral").
 		Voice: &texttospeechpb.VoiceSelectionParams{
 			LanguageCode: opts.LanguageCode,
+			Name:         opts.Voice,
 			SsmlGender:   texttospeechpb.SsmlVoiceGender(ssmlVoiceGender),
 		},
 		// Select the type of audio file you want returned.
