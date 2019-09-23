@@ -81,7 +81,9 @@ dep ensure
 Then, download credential json.
 
 ```
-2019/09/23 20:00:08 rpc error: code = PermissionDenied desc = Cloud Text-to-Speech API has not been used in project xxxxxx before or it is disabled. Enable it by visiting https://console.cloud.google.com/apis/api/texttospeech.googleapis.com/overview?project=xxxxx then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.
+2019/09/23 20:00:08 rpc error: code = PermissionDenied desc = Cloud Text-to-Speech API has not been used in project xxxxxx before or it is disabled. 
+Enable it by visiting https://console.cloud.google.com/apis/api/texttospeech.googleapis.com/overview?project=xxxxx then retry. 
+If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.
 ```
 
 And enable API account ( register your credit card info ).
