@@ -1,31 +1,62 @@
-## google-cloud-text-to-speech-cli
+# google-cloud-text-to-speech-cli
 
 Command line interface for google-cloud-text-to-speech-api.
 
 > Cloud Text-to-Speech Client Libraries  ｜  Cloud Text-to-Speech API  ｜  Google Cloud  
 > https://cloud.google.com/text-to-speech/docs/reference/libraries?hl=ja
 
-## How to use
+# How to use
 
-#### Export environment value
+## Export environment value
 
 ```
 export GOOGLE_APPLICATION_CREDENTIALS=/path/to/credential.json
 ```
 
-#### Build and run
+#### Google Service Account
+
+Credential file of Google Service Account ( /path/to/credential.json ) is required.
+If you don't have account, you need create it.
+
+
+## Execute
+
+Download latest application based on your platform.
+
+> Releases · xshoji/google-cloud-text-to-speech-cli  
+> https://github.com/xshoji/google-cloud-text-to-speech-cli/releases
 
 ```
-go build .
+$ ./google-cloud-text-to-speech-cli --help
+Usage:
+  google-cloud-text-to-speech-cli [OPTIONS]
+
+Application Options:
+  -t, --text=          [required] Text content.
+  -l, --language=      LanguageCode. (default: en)
+  -g, --gender=        SsmlGender. (default: FEMALE)
+  -v, --voice=         Voice type ( see --listvoicetype ). (default: en-AU-Standard-A)
+  -s, --rate=          SpeakingRate. [ 0.25 <= rate <= 4.0 ] (default: 1.0)
+  -p, --pitch=         Pitch. [ -20.0 <= pitch <= 20.0 ]  (default: 0.0)
+  -o, --output=        Output file path. (default: out/output.mp3)
+      --listvoicetype  Display voice types.
+
+Help Options:
+  -h, --help           Show this help message
+  
+
+$ ./google-cloud-text-to-speech-cli --text="Thank you download my apps. This is Command line interface for google-cloud-text-to-speech-api." --rate=1.5 --pitch=-5.0
 ```
 
 ## Development
 
-#### `go get` google libraries
+- dep
+- go 1.12 ( or later )
+
+#### `dep ensure`
 
 ```
-go get -u cloud.google.com/go/texttospeech/apiv1
-go get -u github.com/googleapis/google-cloud-go
+dep ensure
 ```
 
 > googleapis/google-cloud-go： Google Cloud Client Libraries for Go.  

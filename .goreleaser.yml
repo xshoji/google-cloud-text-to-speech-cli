@@ -1,0 +1,13 @@
+before:
+  # Templates for the commands to be ran.
+  hooks:
+    - dep ensure
+builds:
+  - main: main.go
+    binary: google-cloud-text-to-speech-cli
+    goos:
+      - windows
+      - darwin
+      - linux
+    goarch:
+      - amd64
