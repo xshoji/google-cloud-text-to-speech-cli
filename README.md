@@ -49,7 +49,7 @@ Help Options:
 
 
 // Run
-$ ./google-cloud-text-to-speech-cli --text="Thank you download my apps. This is Command line interface for google-cloud-text-to-speech-api." --rate=1.5 --pitch=-5.0
+$ ./google-cloud-text-to-speech-cli --text="Thank you download my app. This is Command line interface for google-cloud-text-to-speech-api." --rate=1.5 --pitch=-5.0
 language:  en
 gender:  FEMALE
 speakingRate:  1.5
