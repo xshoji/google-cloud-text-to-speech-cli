@@ -21,7 +21,7 @@ type options struct {
 	Text           string  `short:"t" long:"text" description:"[required] Text content." default:""`
 	LanguageCode   string  `short:"l" long:"language" description:"LanguageCode." default:"en"`
 	Gender         string  `short:"g" long:"gender" description:"SsmlGender." default:"FEMALE"`
-	Voice          string  `short:"v" long:"voice" description:"Voice type ( see --listvoicetype, ignore --gender )."`
+	Voice          string  `short:"v" long:"voice" description:"Voice type. [ see --listvoicetype, --gender is ignored. ]"`
 	SpeakingRate   float64 `short:"s" long:"rate" description:"SpeakingRate. [ 0.25 <= rate <= 4.0 ]" default:"1.0"`
 	Pitch          float64 `short:"p" long:"pitch" description:"Pitch. [ -20.0 <= pitch <= 20.0 ] " default:"0.0"`
 	OutputFilePath string  `short:"o" long:"output" description:"Output file path." default:"out/output.mp3"`

@@ -27,6 +27,7 @@ Download latest application based on your platform.
 > https://github.com/xshoji/google-cloud-text-to-speech-cli/releases
 
 ```
+// Show help
 $ ./google-cloud-text-to-speech-cli --help
 Usage:
   google-cloud-text-to-speech-cli [OPTIONS]
@@ -35,17 +36,27 @@ Application Options:
   -t, --text=          [required] Text content.
   -l, --language=      LanguageCode. (default: en)
   -g, --gender=        SsmlGender. (default: FEMALE)
-  -v, --voice=         Voice type ( see --listvoicetype ). (default: en-AU-Standard-A)
+  -v, --voice=         Voice type. [ see --listvoicetype, --gender is ignored. ]
   -s, --rate=          SpeakingRate. [ 0.25 <= rate <= 4.0 ] (default: 1.0)
   -p, --pitch=         Pitch. [ -20.0 <= pitch <= 20.0 ]  (default: 0.0)
   -o, --output=        Output file path. (default: out/output.mp3)
       --listvoicetype  Display voice types.
+      --filterbylang   Filter voice types by language.
 
 Help Options:
-  -h, --help           Show this help message
-  
+  -h, --help           Show this help message  
 
+
+
+// Run
 $ ./google-cloud-text-to-speech-cli --text="Thank you download my apps. This is Command line interface for google-cloud-text-to-speech-api." --rate=1.5 --pitch=-5.0
+language:  en
+gender:  FEMALE
+speakingRate:  1.5
+pitch:  -5
+output:  out/output.mp3
+
+Audio content written to file: out/output.mp3
 ```
 
 ## Development
