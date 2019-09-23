@@ -21,11 +21,12 @@ type options struct {
 	Text           string  `short:"t" long:"text" description:"[required] Text content." default:""`
 	LanguageCode   string  `short:"l" long:"language" description:"LanguageCode." default:"en"`
 	Gender         string  `short:"g" long:"gender" description:"SsmlGender." default:"FEMALE"`
-	Voice          string  `short:"v" long:"voice" description:"Voice type ( see --listvoicetype )." default:"en-AU-Standard-A"`
+	Voice          string  `short:"v" long:"voice" description:"Voice type ( see --listvoicetype, ignore --gender )."`
 	SpeakingRate   float64 `short:"s" long:"rate" description:"SpeakingRate. [ 0.25 <= rate <= 4.0 ]" default:"1.0"`
 	Pitch          float64 `short:"p" long:"pitch" description:"Pitch. [ -20.0 <= pitch <= 20.0 ] " default:"0.0"`
 	OutputFilePath string  `short:"o" long:"output" description:"Output file path." default:"out/output.mp3"`
 	ListVoiceType  bool    `long:"listvoicetype" description:"Display voice types."`
+	FilterByLang   bool    `long:"filterbylang" description:"Filter voice types by language."`
 }
 
 func main() {
@@ -59,7 +60,7 @@ func main() {
 
 	// list mode
 	if opts.ListVoiceType {
-		ListVoices(os.Stdout, opts.LanguageCode)
+		ListVoices(os.Stdout, opts.LanguageCode, opts.FilterByLang)
 		os.Exit(0)
 	}
 
@@ -117,7 +118,7 @@ func main() {
 // > サポートされているすべての音声の一覧表示  ｜  Cloud Text-to-Speech Documentation  ｜  Google Cloud
 // > https://cloud.google.com/text-to-speech/docs/list-voices?hl=ja
 // ListVoices lists the available text to speech voices.
-func ListVoices(w io.Writer, language string) error {
+func ListVoices(w io.Writer, language string, enableFilter bool) error {
 	ctx := context.Background()
 
 	client, err := texttospeech.NewClient(ctx)
@@ -140,7 +141,7 @@ func ListVoices(w io.Writer, language string) error {
 				isSupported = true
 			}
 		}
-		if !isSupported {
+		if enableFilter && !isSupported {
 			continue
 		}
 
