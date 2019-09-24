@@ -65,11 +65,11 @@ func main() {
 	}
 
 	if opts.Text == "" {
-		log.Fatal("text is empty.")
+		log.Fatal("--text is required.")
 	}
-	ssmlVoiceGender, ok := texttospeechpb.SsmlVoiceGender_value[opts.Gender]
+	ssmlGender, ok := texttospeechpb.SsmlVoiceGender_value[opts.Gender]
 	if !ok {
-		log.Fatal("Undefined voice type.")
+		log.Fatal("Undefined ssml voice gender.")
 	}
 
 	// Instantiates a client.
@@ -92,7 +92,7 @@ func main() {
 		Voice: &texttospeechpb.VoiceSelectionParams{
 			LanguageCode: opts.LanguageCode,
 			Name:         opts.Voice,
-			SsmlGender:   texttospeechpb.SsmlVoiceGender(ssmlVoiceGender),
+			SsmlGender:   texttospeechpb.SsmlVoiceGender(ssmlGender),
 		},
 		// Select the type of audio file you want returned.
 		AudioConfig: &texttospeechpb.AudioConfig{
