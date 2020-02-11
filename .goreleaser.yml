@@ -1,7 +1,8 @@
-before:
-  # Templates for the commands to be ran.
-  hooks:
-    - dep ensure
+# No needs following setting. There is go modules.
+#before:
+#  # Templates for the commands to be ran.
+#  hooks:
+#    - dep ensure
 builds:
   - main: main.go
     binary: google-cloud-text-to-speech-cli
