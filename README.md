@@ -61,14 +61,7 @@ Audio content written to file: out/output.mp3
 
 ## Development
 
-- dep
-- go 1.12 ( or later )
-
-#### `dep ensure`
-
-```
-dep ensure
-```
+- go 1.13 ( or later )
 
 > googleapis/google-cloud-go： Google Cloud Client Libraries for Go.  
 > https://github.com/googleapis/google-cloud-go
@@ -87,6 +80,13 @@ If you enabled this API recently, wait a few minutes for the action to propagate
 ```
 
 And enable API account ( register your credit card info ).
+
+## Release
+
+```
+// release new version
+git tag v0.0.3 && git push --tags && goreleaser --rm-dist
+```
 
 ## References
 
